@@ -1,69 +1,113 @@
 <div align="center">
-  <div style="background-color: #3b82f6; width: 64px; height: 64px; border-radius: 16px; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-  </div>
-  
-  # FitHub
 
-  **Kişisel Performans & Modern Fitness Merkezi**
+# FitHub
 
-  <p>FitHub, modern spor hekimliği ve biyometri standartlarına sadık kalınarak formüle edilmiş araçları, kişiselleştirilmiş antrenman programlarını ve akıllı motor destekli fitness koçluğunu pürüzsüz bir arayüzde birleştiren açık kaynaklı bir platformdur.</p>
+Modern fitness planlama, takip ve karar destek platformu.
 
-  [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-  [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
+[Canlı Uygulamayı Görüntüle](https://fit-hub-xi.vercel.app/)
+
 </div>
 
-<br />
+## Proje Hakkında
 
-## 🌟 Özellikler
+FitHub; kullanıcıların hedeflerine uygun antrenman programları oluşturabildiği, egzersizleri doğru teknikle inceleyebildiği, fiziksel gelişimini takip edebildiği ve bilimsel hesaplama araçlarından yararlanabildiği kapsamlı bir web uygulamasıdır.
 
-- **Gelişmiş Hesaplamalar:** Makro besin dengesi, 1RM tahmini, Kalori ihtiyacı, Kardiyo analizleri ve detaylı vücut kompozisyonu raporlaması.
-- **Dinamik Program Oluşturucu:** Fitness geçmişinize ve hedeflerinize özel bilimsel antrenman programı çıktısı üreten akıllı sistem.
-- **Kapsamlı Hareket Kütüphanesi:** Biyomekanik analizleri, kas grupları ve sakatlıktan kaçınma ipuçları ile zenginleştirilmiş egzersizler.
-- **FitHub Koç (Akıllı Asistan):** Uygulama verilerinizi okuyabilen ve hedefinize uygun anlık taktikler veren, projeye entegre akıllı analiz motoru.
-- **Premium UI (Bento & Glassmorphism):** Pürüzsüz asimetrik grid yapıları, yarı saydam cam efektleri ve kusursuz derin "Dark Mode" optimizasyonu.
+Proje, modern bir dijital ürünün ihtiyaç duyabileceği kullanıcı yönetimi, kişiselleştirilmiş deneyim, veri işleme, görselleştirme, içerik yönetimi ve yapay zekâ destekli yönlendirme özelliklerini tek bir platformda bir araya getirmektedir.
 
-## 🚀 Teknolojik Altyapı (Tech Stack)
+## Canlı Proje
 
-- **Framework:** [Next.js (App Router)](https://nextjs.org/)
-- **Stil & UI:** [Tailwind CSS](https://tailwindcss.com/), Vercel/Apple stili "Elektrik Mavisi" UI kütüphanesi
-- **Veritabanı & Auth:** [Supabase](https://supabase.com/)
-- **İkonlar:** [Lucide React](https://lucide.dev/)
-- **Font:** [Geist](https://vercel.com/font)
-- **Animasyon:** [Framer Motion](https://www.framer.com/motion/)
+Uygulamanın yayınlanan sürümünü doğrudan inceleyebilirsiniz:
 
-## 💻 Kurulum ve Çalıştırma
+**[https://fit-hub-xi.vercel.app/](https://fit-hub-xi.vercel.app/)**
 
-Lokal ortamınızda projeyi ayağa kaldırmak için aşağıdaki adımları izleyebilirsiniz.
+## Öne Çıkan Özellikler
 
-1. **Depoyu klonlayın:**
-   ```bash
-   git clone https://github.com/kullaniciadi/fit-hub.git
-   cd fit-hub
-   ```
+### Kişiselleştirilmiş Program Oluşturma
 
-2. **Gereksinimleri yükleyin:**
-   ```bash
-   npm install
-   ```
+Kullanıcının hedefi, antrenman seviyesi ve haftalık uygunluğu doğrultusunda kişisel bir antrenman planı oluşturulabilir.
 
-3. **Çevre değişkenlerini (Environment Variables) ayarlayın:**
-   `.env.local` dosyasını oluşturun ve Supabase dahil gerekli API anahtarlarınızı ekleyin:
-   ```env
-   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-   ```
+### Hazır Antrenman Programları
 
-4. **Geliştirme sunucusunu başlatın:**
-   ```bash
-   npm run dev
-   ```
+Farklı seviye ve hedeflere yönelik programlar incelenebilir, karşılaştırılabilir ve antrenman akışına dönüştürülebilir.
 
-   Uygulama `http://localhost:3000` adresinde çalışmaya başlayacaktır.
+### Egzersiz Kütüphanesi
 
-## 📝 Lisans
+Hareketler; hedeflenen kas grupları, teknik açıklamalar ve güvenli uygulama bilgileriyle birlikte sunulur.
 
-Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır. Herhangi bir katkıda bulunmaktan, fork'lamaktan ve geliştirmekten çekinmeyin!
+### Fitness Hesaplama Araçları
 
+Platform içerisinde günlük kalori ihtiyacı, makro besin dağılımı, vücut kitle indeksi, ideal kilo, 1RM tahmini, hedef nabız bölgeleri, su ihtiyacı ve vücut kompozisyonu gibi çok sayıda hesaplama aracı bulunmaktadır.
 
+### Kullanıcı ve Gelişim Takibi
+
+Kullanıcılar kişisel bilgilerini, ölçümlerini ve antrenman verilerini tek bir panel üzerinden yönetebilir.
+
+### FitHub Koç
+
+Kullanıcının hedeflerine ve kayıtlarına göre kısa, uygulanabilir ve kişiselleştirilmiş fitness yönlendirmeleri sunan akıllı koç deneyimi geliştirilmiştir.
+
+### İçerik ve Yönetim Sistemi
+
+Program, egzersiz ve bilgilendirici içeriklerin yönetilebilmesi için ayrı bir yönetim alanı oluşturulmuştur.
+
+### Responsive Kullanıcı Deneyimi
+
+Arayüz; masaüstü, tablet ve mobil cihazlarda tutarlı bir deneyim sunacak şekilde geliştirilmiştir.
+
+## Kullanılan Teknolojiler
+
+| Teknoloji | Kullanım Alanı |
+|---|---|
+| Next.js 16 | Uygulama mimarisi, yönlendirme ve sunucu tarafı işlemler |
+| React 19 | Etkileşimli kullanıcı arayüzleri |
+| TypeScript | Güvenli ve sürdürülebilir kod yapısı |
+| Tailwind CSS 4 | Responsive tasarım ve stil sistemi |
+| Supabase | Veritabanı ve kullanıcı kimlik doğrulama |
+| Framer Motion | Arayüz animasyonları |
+| Recharts | Grafik ve veri görselleştirme |
+| jsPDF | Rapor ve çıktı oluşturma |
+| Vercel | Yayınlama ve üretim ortamı |
+
+## Teknik Yaklaşım
+
+Proje geliştirilirken ölçeklenebilir, modüler ve yeniden kullanılabilir bir yapı hedeflenmiştir.
+
+Uygulamada:
+
+- Next.js App Router mimarisi
+- Sunucu ve istemci bileşenleri
+- Supabase tabanlı kullanıcı doğrulama
+- Dinamik sayfalar ve API route yapısı
+- Yeniden kullanılabilir React componentleri
+- Form doğrulama ve hata yönetimi
+- Grafik ve raporlama ekranları
+- Açık ve koyu tema desteği
+- Responsive tasarım yaklaşımı
+- Ortam değişkenleriyle güvenli servis yapılandırması
+
+kullanılmıştır.
+
+## Projenin Gösterdiği Yetkinlikler
+
+FitHub yalnızca bir arayüz çalışması değildir. Gerçek bir ürünün ihtiyaç duyduğu kullanıcı hesabı, veritabanı, yetkilendirme, kişiselleştirme, hesaplama araçları, içerik yönetimi ve harici servis entegrasyonlarını içeren uçtan uca bir web uygulamasıdır.
+
+Bu proje aşağıdaki alanlardaki yetkinliklerimi göstermektedir:
+
+- Full-stack web geliştirme
+- Modern frontend mimarisi
+- UI/UX uygulama
+- Veritabanı ve authentication entegrasyonu
+- API geliştirme ve harici servis kullanımı
+- Veri işleme ve görselleştirme
+- Responsive web tasarımı
+- Ürün odaklı yazılım geliştirme
+
+## Geliştirici
+
+**Abdulkadir Akansu**
+
+[GitHub Profilim](https://github.com/AbdulkadirAkansu)
+
+## Bilgilendirme
+
+FitHub üzerindeki hesaplamalar, programlar ve koç yönlendirmeleri genel bilgilendirme amacıyla sunulmaktadır. Tıbbi teşhis veya profesyonel sağlık hizmeti yerine geçmez.
