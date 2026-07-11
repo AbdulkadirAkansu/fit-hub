@@ -294,14 +294,23 @@ function LoginContent() {
                 type="button"
                 onClick={continueWithGoogle}
                 disabled={loading}
-                className="mt-7 flex w-full items-center justify-center gap-3 rounded-xl border border-zinc-300 bg-white px-5 py-3.5 text-sm font-black text-zinc-800 transition-colors hover:bg-zinc-50 disabled:opacity-50 dark:border-white/[0.12] dark:bg-white/[0.05] dark:text-white dark:hover:bg-white/[0.08]"
+                aria-label="Google hesabıyla devam et"
+                className="group relative mt-7 flex min-h-14 w-full items-center justify-center gap-3 overflow-hidden rounded-2xl border border-zinc-200 bg-white px-5 py-3.5 text-sm font-black text-zinc-800 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-lg hover:shadow-zinc-900/10 focus-visible:outline-primary disabled:pointer-events-none disabled:opacity-55 dark:border-white/[0.12] dark:bg-white/[0.06] dark:text-white dark:hover:border-white/25 dark:hover:bg-white/[0.1]"
               >
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-sm font-black text-[#4285f4] shadow-sm">G</span>
-                Google ile devam et
+                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-100 bg-white shadow-sm transition-transform duration-300 group-hover:scale-105 dark:border-white/10 dark:bg-white">
+                  <svg viewBox="0 0 24 24" aria-hidden className="h-[18px] w-[18px]">
+                    <path fill="#4285F4" d="M21.35 12.23c0-.71-.06-1.39-.18-2.05H12v3.88h5.24a4.48 4.48 0 0 1-1.94 2.94v2.52h3.15c1.84-1.69 2.9-4.18 2.9-7.29Z" />
+                    <path fill="#34A853" d="M12 21.75c2.63 0 4.83-.87 6.45-2.37L15.3 16.9c-.87.58-1.98.92-3.3.92-2.54 0-4.7-1.72-5.47-4.03H3.27v2.6A9.74 9.74 0 0 0 12 21.75Z" />
+                    <path fill="#FBBC05" d="M6.53 13.79A5.86 5.86 0 0 1 6.22 12c0-.62.11-1.22.31-1.79v-2.6H3.27A9.74 9.74 0 0 0 2.25 12c0 1.57.38 3.06 1.02 4.39l3.26-2.6Z" />
+                    <path fill="#EA4335" d="M12 6.18c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.82 3.27 14.63 2.25 12 2.25a9.74 9.74 0 0 0-8.73 5.36l3.26 2.6C7.3 7.9 9.46 6.18 12 6.18Z" />
+                  </svg>
+                </span>
+                <span>Google ile devam et</span>
+                <ArrowRight size={16} className="absolute right-5 text-zinc-400 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-zinc-700 dark:group-hover:text-white" aria-hidden />
               </button>
-              <div className="my-5 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.14em] text-zinc-400">
+              <div className="my-6 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.14em] text-zinc-400">
                 <span className="h-px flex-1 bg-zinc-200 dark:bg-white/[0.08]" />
-                veya e-posta
+                veya e-posta ile devam et
                 <span className="h-px flex-1 bg-zinc-200 dark:bg-white/[0.08]" />
               </div>
             </>
