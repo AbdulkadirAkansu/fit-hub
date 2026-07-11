@@ -16,6 +16,7 @@ Bu liste, kod yayımlanmadan önce bir kez tamamlanması gereken Vercel, Supabas
 FitHub'ın kayıt ekranı doğrulama e-postası ve yeniden gönderme akışını hazırlar. Bunun çalışması için Supabase panelindeki canlı ayarların aşağıdaki şekilde olması gerekir:
 
 - [ ] Authentication > Sign In / Providers > Email bölümünde **Confirm email** açık.
+- [ ] Authentication > Email Templates > **Confirm signup** şablonu bağlantı yerine `{{ .Token }}` ile 8 haneli kod gönderiyor. Önerilen konu: `FitHub doğrulama kodun: {{ .Token }}`. Önerilen içerik: `<h2>E-posta adresini doğrula</h2><p>FitHub hesabını etkinleştirmek için bu kodu uygulamaya gir:</p><p style="font-size:28px;font-weight:700;letter-spacing:6px">{{ .Token }}</p><p>Bu kod tek kullanımlıktır.</p>`
 - [ ] Authentication > URL Configuration bölümünde **Site URL** `https://fit-hub-xi.vercel.app`.
 - [ ] Aynı bölümde Redirect URLs listesine şunlar eklendi:
   - `https://fit-hub-xi.vercel.app/hesap/giris`

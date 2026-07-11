@@ -22,6 +22,7 @@ function translateError(message: string) {
   if (text.includes("invalid email")) return "Geçerli bir e-posta adresi gir.";
   if (text.includes("rate limit") || text.includes("too many")) return "Çok fazla deneme yapıldı. Birkaç dakika sonra tekrar dene.";
   if (text.includes("provider") && text.includes("not enabled")) return "Bu giriş yöntemi henüz etkin değil.";
+  if ((text.includes("token") || text.includes("otp")) && (text.includes("invalid") || text.includes("expired"))) return "Kod geçersiz veya süresi dolmuş. Yeni kod isteyip tekrar dene.";
   if (text.includes("weak") || text.includes("strength")) return "Daha güçlü bir şifre seçmelisin.";
   if (text.includes("signup") && text.includes("disabled")) return "Yeni hesap oluşturma geçici olarak kapalı.";
   if (text.includes("network") || text.includes("fetch")) return "Bağlantı kurulamadı. İnternet bağlantını kontrol et.";
@@ -58,6 +59,7 @@ function LoginContent() {
   const [googleEnabled, setGoogleEnabled] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [verificationEmail, setVerificationEmail] = useState("");
+  const [verificationCode, setVerificationCode] = useState("");
   const [resendCooldown, setResendCooldown] = useState(0);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -135,6 +137,7 @@ function LoginContent() {
     setErrors({});
     setMessage(null);
     setVerificationEmail("");
+    setVerificationCode("");
   };
 
   const continueWithGoogle = async () => {
@@ -233,8 +236,34 @@ function LoginContent() {
         options: { emailRedirectTo: `${window.location.origin}/hesap/giris` },
       });
       if (error) throw error;
+      setVerificationCode("");
       setResendCooldown(60);
       setMessage({ type: "success", text: "Doğrulama e-postası yeniden gönderildi." });
+    } catch (error) {
+      setMessage({ type: "error", text: translateError(error instanceof Error ? error.message : "") });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const verifyEmailCode = async (event: React.FormEvent) => {
+    event.preventDefault();
+    const code = verificationCode.trim();
+    if (code.length !== 8) {
+      setMessage({ type: "error", text: "E-postadaki 8 haneli doğrulama kodunu gir." });
+      return;
+    }
+
+    setLoading(true);
+    setMessage(null);
+    try {
+      const { data, error } = await supabase.auth.verifyOtp({
+        email: verificationEmail,
+        token: code,
+        type: "signup",
+      });
+      if (error) throw error;
+      if (data.user) router.replace("/hesap");
     } catch (error) {
       setMessage({ type: "error", text: translateError(error instanceof Error ? error.message : "") });
     } finally {
@@ -274,14 +303,34 @@ function LoginContent() {
               <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary"><Mail size={28} /></span>
               <p className="mt-6 text-xs font-black uppercase tracking-[0.16em] text-primary">Son bir adım</p>
               <h1 className="mt-3 text-3xl font-black tracking-tight">E-posta adresini doğrula</h1>
-              <p className="mx-auto mt-4 max-w-sm text-sm leading-6 text-zinc-500">Doğrulama bağlantısını <strong className="text-zinc-900 dark:text-white">{verificationEmail}</strong> adresine gönderdik. Bağlantıya tıkladıktan sonra hesabına giriş yapabilirsin.</p>
+              <p className="mx-auto mt-4 max-w-sm text-sm leading-6 text-zinc-500"><strong className="text-zinc-900 dark:text-white">{verificationEmail}</strong> adresine 8 haneli bir doğrulama kodu gönderdik.</p>
               <div className="mt-6 rounded-2xl border border-zinc-200 bg-zinc-50 p-4 text-left text-sm text-zinc-600 dark:border-white/[0.08] dark:bg-white/[0.04] dark:text-zinc-400">
                 <p className="flex gap-2"><CheckCircle2 size={16} className="mt-0.5 shrink-0 text-primary" /> Gelen kutusu ve spam klasörünü kontrol et.</p>
-                <p className="mt-2 flex gap-2"><ShieldCheck size={16} className="mt-0.5 shrink-0 text-primary" /> Bu doğrulama hesabının güvenliğini sağlar.</p>
+                <p className="mt-2 flex gap-2"><ShieldCheck size={16} className="mt-0.5 shrink-0 text-primary" /> Kod tek kullanımlıktır ve hesabını güvenle etkinleştirir.</p>
               </div>
+              <form onSubmit={verifyEmailCode} className="mt-6">
+                <label className="block text-left text-xs font-black uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">
+                  Doğrulama kodu
+                  <input
+                    value={verificationCode}
+                    onChange={(event) => setVerificationCode(event.target.value.replace(/\D/g, "").slice(0, 8))}
+                    type="text"
+                    inputMode="numeric"
+                    autoComplete="one-time-code"
+                    pattern="[0-9]*"
+                    maxLength={8}
+                    placeholder="00000000"
+                    aria-label="8 haneli doğrulama kodu"
+                    className="mt-2 h-14 w-full rounded-2xl border border-zinc-200 bg-white px-4 text-center font-mono text-2xl font-black tracking-[0.45em] text-zinc-950 outline-none transition placeholder:tracking-[0.32em] placeholder:text-zinc-300 focus:border-primary focus:ring-4 focus:ring-primary/10 dark:border-white/[0.12] dark:bg-white/[0.06] dark:text-white dark:placeholder:text-zinc-600"
+                  />
+                </label>
+                <button type="submit" disabled={loading || verificationCode.length !== 8} className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3.5 text-sm font-black text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50">
+                  {loading ? <Loader2 size={16} className="animate-spin" /> : <ShieldCheck size={16} />} Kodu doğrula ve devam et
+                </button>
+              </form>
               {message && <div className={`mt-5 rounded-xl border px-4 py-3 text-sm font-semibold ${message.type === "success" ? "border-primary/25 bg-primary/5 text-primary" : "border-rose-200 bg-rose-50 text-rose-700 dark:border-rose-500/20 dark:bg-rose-500/10 dark:text-rose-300"}`}>{message.text}</div>}
               <button type="button" onClick={resendVerification} disabled={loading || resendCooldown > 0} className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-950 px-5 py-3.5 text-sm font-black text-white disabled:opacity-50 dark:bg-white dark:text-zinc-950">{loading ? <Loader2 size={16} className="animate-spin" /> : <RefreshCw size={16} />} {resendCooldown > 0 ? `${resendCooldown} saniye sonra tekrar gönder` : "Doğrulama e-postasını tekrar gönder"}</button>
-              <button type="button" onClick={() => { setVerificationEmail(""); setMode("register"); setMessage(null); }} className="mt-4 text-sm font-bold text-primary">E-posta adresini değiştir</button>
+              <button type="button" onClick={() => { setVerificationEmail(""); setVerificationCode(""); setMode("register"); setMessage(null); }} className="mt-4 text-sm font-bold text-primary">E-posta adresini değiştir</button>
             </div>
           ) : (
           <>
