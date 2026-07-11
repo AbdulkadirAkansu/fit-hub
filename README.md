@@ -2,19 +2,35 @@
 
 # FitHub
 
-Modern fitness planlama, takip ve karar destek platformu.
+Kişiselleştirilmiş antrenman, bilimsel hesaplamalar ve gelişim takibini tek platformda birleştiren modern fitness uygulaması.
 
-[Canlı Uygulamayı Görüntüle](https://fit-hub-xi.vercel.app/)
+[Canlı Uygulama](https://fit-hub-xi.vercel.app/) · [Tanıtım Videosu](https://youtu.be/ib980tOZMws)
+
+</div>
+
+## Proje Tanıtım Videosu
+
+<div align="center">
+
+<a href="https://youtu.be/ib980tOZMws">
+  <img
+    src="https://img.youtube.com/vi/ib980tOZMws/maxresdefault.jpg"
+    alt="FitHub Proje Tanıtım Videosu"
+    width="850"
+  />
+</a>
+
+**FitHub'ın kullanıcı deneyimini ve temel özelliklerini görmek için görsele tıklayın.**
 
 </div>
 
 ## Proje Hakkında
 
-FitHub; kullanıcıların hedeflerine uygun antrenman programları oluşturabildiği, egzersizleri doğru teknikle inceleyebildiği, fiziksel gelişimini takip edebildiği ve bilimsel hesaplama araçlarından yararlanabildiği kapsamlı bir web uygulamasıdır.
+FitHub; kullanıcıların hedeflerine uygun antrenman programları oluşturabildiği, egzersizleri inceleyebildiği, fiziksel gelişimini takip edebildiği ve bilimsel fitness hesaplama araçlarından yararlanabildiği kapsamlı bir web uygulamasıdır.
 
-Proje, modern bir dijital ürünün ihtiyaç duyabileceği kullanıcı yönetimi, kişiselleştirilmiş deneyim, veri işleme, görselleştirme, içerik yönetimi ve yapay zekâ destekli yönlendirme özelliklerini tek bir platformda bir araya getirmektedir.
+Proje; modern bir dijital üründe bulunabilecek kullanıcı yönetimi, kişiselleştirilmiş içerik, veri işleme, görselleştirme, yönetim paneli ve akıllı koç deneyimini tek bir platformda bir araya getirmektedir.
 
-## Canlı Proje
+## Canlı Uygulama
 
 Uygulamanın yayınlanan sürümünü doğrudan inceleyebilirsiniz:
 
@@ -22,37 +38,50 @@ Uygulamanın yayınlanan sürümünü doğrudan inceleyebilirsiniz:
 
 ## Öne Çıkan Özellikler
 
-### Kişiselleştirilmiş Program Oluşturma
+### Kişiselleştirilmiş Antrenman Programı
 
-Kullanıcının hedefi, antrenman seviyesi ve haftalık uygunluğu doğrultusunda kişisel bir antrenman planı oluşturulabilir.
+Kullanıcının hedefi, antrenman seviyesi ve haftalık uygunluğu doğrultusunda kişisel antrenman planları oluşturulabilir.
 
-### Hazır Antrenman Programları
+### Hazır Programlar
 
-Farklı seviye ve hedeflere yönelik programlar incelenebilir, karşılaştırılabilir ve antrenman akışına dönüştürülebilir.
+Farklı seviye ve hedeflere yönelik antrenman programları incelenebilir ve uygulanabilir bir antrenman akışına dönüştürülebilir.
 
 ### Egzersiz Kütüphanesi
 
 Hareketler; hedeflenen kas grupları, teknik açıklamalar ve güvenli uygulama bilgileriyle birlikte sunulur.
 
-### Fitness Hesaplama Araçları
+### Bilimsel Hesaplama Araçları
 
-Platform içerisinde günlük kalori ihtiyacı, makro besin dağılımı, vücut kitle indeksi, ideal kilo, 1RM tahmini, hedef nabız bölgeleri, su ihtiyacı ve vücut kompozisyonu gibi çok sayıda hesaplama aracı bulunmaktadır.
+Platform içerisinde aşağıdaki ihtiyaçlara yönelik araçlar bulunmaktadır:
+
+- Günlük kalori ihtiyacı
+- Makro besin dağılımı
+- Vücut kitle indeksi
+- İdeal kilo
+- Vücut kompozisyonu
+- 1RM kuvvet tahmini
+- Antrenman hacmi
+- Hedef nabız bölgeleri
+- Kardiyo kalori tahmini
+- Günlük su ihtiyacı
+- Bel-boy ve bel-kalça oranı
+- Ağırlık plakası hesaplama
 
 ### Kullanıcı ve Gelişim Takibi
 
-Kullanıcılar kişisel bilgilerini, ölçümlerini ve antrenman verilerini tek bir panel üzerinden yönetebilir.
+Kullanıcılar kişisel bilgilerini, ölçümlerini ve antrenman verilerini tek bir panel üzerinden takip edebilir.
 
 ### FitHub Koç
 
-Kullanıcının hedeflerine ve kayıtlarına göre kısa, uygulanabilir ve kişiselleştirilmiş fitness yönlendirmeleri sunan akıllı koç deneyimi geliştirilmiştir.
+Kullanıcının hedefleri ve kayıtları doğrultusunda kısa, uygulanabilir ve kişiselleştirilmiş fitness yönlendirmeleri sunan akıllı koç deneyimi geliştirilmiştir.
 
-### İçerik ve Yönetim Sistemi
+### Yönetim Alanı
 
-Program, egzersiz ve bilgilendirici içeriklerin yönetilebilmesi için ayrı bir yönetim alanı oluşturulmuştur.
+Platformdaki program, egzersiz ve bilgilendirici içeriklerin yönetilebilmesi için ayrı bir yönetici alanı oluşturulmuştur.
 
-### Responsive Kullanıcı Deneyimi
+### Responsive Tasarım
 
-Arayüz; masaüstü, tablet ve mobil cihazlarda tutarlı bir deneyim sunacak şekilde geliştirilmiştir.
+Uygulama masaüstü, tablet ve mobil cihazlarda tutarlı bir kullanıcı deneyimi sunacak şekilde geliştirilmiştir.
 
 ## Kullanılan Teknolojiler
 
@@ -66,7 +95,7 @@ Arayüz; masaüstü, tablet ve mobil cihazlarda tutarlı bir deneyim sunacak şe
 | Framer Motion | Arayüz animasyonları |
 | Recharts | Grafik ve veri görselleştirme |
 | jsPDF | Rapor ve çıktı oluşturma |
-| Vercel | Yayınlama ve üretim ortamı |
+| Vercel | Üretim ortamı ve yayınlama |
 
 ## Teknik Yaklaşım
 
@@ -78,12 +107,12 @@ Uygulamada:
 - Sunucu ve istemci bileşenleri
 - Supabase tabanlı kullanıcı doğrulama
 - Dinamik sayfalar ve API route yapısı
-- Yeniden kullanılabilir React componentleri
+- Yeniden kullanılabilir React bileşenleri
 - Form doğrulama ve hata yönetimi
 - Grafik ve raporlama ekranları
 - Açık ve koyu tema desteği
 - Responsive tasarım yaklaşımı
-- Ortam değişkenleriyle güvenli servis yapılandırması
+- Ortam değişkenleriyle servis yapılandırması
 
 kullanılmıştır.
 
