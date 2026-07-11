@@ -36,6 +36,21 @@ Uygulamanın yayınlanan sürümünü doğrudan inceleyebilirsiniz:
 
 **[https://fit-hub-xi.vercel.app/](https://fit-hub-xi.vercel.app/)**
 
+## Kalite ve Yayın Kontrolleri
+
+- Her kod değişikliğinde GitHub Actions ile lint ve üretim derlemesi doğrulanır.
+- Vercel Web Analytics, yayın ortamındaki anonim sayfa kullanımını izlemek için entegredir.
+- Mobil menü, güvenli ekran boşlukları ve sayfa kaydırma davranışı telefon tarayıcıları için ayrıca ele alınmıştır.
+- Auth, SMTP, Google OAuth ve Vercel ortam değişkenleri için yayın kontrol listesi: [docs/production-checklist.md](docs/production-checklist.md)
+
+Yerelde kalite kontrolleri:
+
+```bash
+npm ci
+npm run lint
+npm run build
+```
+
 ## Öne Çıkan Özellikler
 
 ### Kişiselleştirilmiş Antrenman Programı
@@ -112,7 +127,8 @@ Uygulamada:
 - Grafik ve raporlama ekranları
 - Açık ve koyu tema desteği
 - Responsive tasarım yaklaşımı
-- Ortam değişkenleriyle servis yapılandırması
+- Ortam değişkenleriyle güvenli servis yapılandırması
+- CI ile otomatik lint ve üretim derlemesi kontrolü
 
 kullanılmıştır.
 

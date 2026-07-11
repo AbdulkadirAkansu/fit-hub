@@ -5,6 +5,11 @@ import { BLOG_POSTS } from "@/constants/blog";
 import { supabase } from "@/lib/supabase";
 import { SITE_URL } from "@/lib/site";
 
+type SitemapContent = {
+  id: string;
+  created_at: string | null;
+};
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = SITE_URL;
 
@@ -47,9 +52,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Admin panelinden Supabase'e eklenen içerik (statik kataloğa ek olarak).
   // RLS herkese açık SELECT'e izin verdiği için anon client burada güvenle kullanılır.
-  let dbPrograms = { data: [] as any[] };
-  let dbExercises = { data: [] as any[] };
-  let dbBlogs = { data: [] as any[] };
+  let dbPrograms: { data: SitemapContent[] } = { data: [] };
+  let dbExercises: { data: SitemapContent[] } = { data: [] };
+  let dbBlogs: { data: SitemapContent[] } = { data: [] };
 
   try {
     const [p, e, b] = await Promise.all([
@@ -57,10 +62,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       supabase.from("exercises").select("id, created_at"),
       supabase.from("blog_posts").select("id, created_at"),
     ]);
-    dbPrograms = { data: p.data || [] };
-    dbExercises = { data: e.data || [] };
-    dbBlogs = { data: b.data || [] };
-  } catch (err) {
+    dbPrograms = { data: (p.data || []) as SitemapContent[] };
+    dbExercises = { data: (e.data || []) as SitemapContent[] };
+    dbBlogs = { data: (b.data || []) as SitemapContent[] };
+  } catch {
     console.warn("Sitemap: Supabase connection failed. Falling back to static routes.");
   }
 
