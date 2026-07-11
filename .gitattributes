@@ -1,0 +1,11 @@
+# Satır sonlarını repoda LF'e normalize et; checkout'ta platforma bırak.
+* text=auto eol=lf
+
+# İkili dosyalar dokunulmadan kalsın.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.pdf binary

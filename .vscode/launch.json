@@ -1,0 +1,49 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Next.js: Full Stack",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 9229,
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**",
+        "**/next/dist/**",
+        "**/.next/**"
+      ],
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**",
+        "!**/next/dist/**",
+        "!**/.next/**"
+      ],
+      "serverReadyAction": {
+        "action": "debugWithChrome",
+        "pattern": "ready on",
+        "url": "http://localhost:3000"
+      }
+    },
+    {
+      "name": "Next.js: Client Debugger",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/fit-hub",
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**",
+        "**/next/dist/**",
+        "**/.next/**"
+      ],
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**",
+        "!**/next/dist/**",
+        "!**/.next/**"
+      ]
+    }
+  ]
+}
