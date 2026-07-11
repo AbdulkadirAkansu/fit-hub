@@ -57,9 +57,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       supabase.from("exercises").select("id, created_at"),
       supabase.from("blog_posts").select("id, created_at"),
     ]);
-    dbPrograms = p;
-    dbExercises = e;
-    dbBlogs = b;
+    dbPrograms = { data: p.data || [] };
+    dbExercises = { data: e.data || [] };
+    dbBlogs = { data: b.data || [] };
   } catch (err) {
     console.warn("Sitemap: Supabase connection failed. Falling back to static routes.");
   }
