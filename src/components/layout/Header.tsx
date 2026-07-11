@@ -21,8 +21,20 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    if (!menuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const closeWithEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", closeWithEscape);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", closeWithEscape);
+    };
   }, [menuOpen]);
 
   if (pathname?.startsWith("/admin")) return null;
@@ -30,7 +42,8 @@ export default function Header() {
   const isActive = (href: string) => pathname === href || pathname?.startsWith(`${href}/`);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-[100] border-b border-zinc-950/5 bg-white/70 backdrop-blur-2xl dark:border-white/5 dark:bg-bg-dark/70">
+    <>
+      <header className="fixed inset-x-0 top-0 z-[100] border-b border-zinc-950/5 bg-white/70 backdrop-blur-2xl dark:border-white/5 dark:bg-bg-dark/70">
       <div className="container mx-auto flex h-16 items-center justify-between gap-4 px-5 sm:px-6">
         <Link href="/" onClick={() => setMenuOpen(false)} aria-label="FitHub ana sayfa" className="flex items-center gap-2.5 group">
           <span className="flex h-9 w-9 items-center justify-center rounded-[10px] bg-primary text-white shadow-lg shadow-primary/20 transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-3">
@@ -74,17 +87,19 @@ export default function Header() {
             type="button"
             aria-label={menuOpen ? "Menüyü kapat" : "Menüyü aç"}
             aria-expanded={menuOpen}
+            aria-controls="mobil-menu"
             onClick={() => setMenuOpen((value) => !value)}
-            className="flex h-9 w-9 items-center justify-center rounded-lg text-zinc-700 transition-colors hover:bg-zinc-950/5 dark:text-zinc-200 dark:hover:bg-white/5 lg:hidden"
+            className="flex h-9 w-9 touch-manipulation items-center justify-center rounded-lg text-zinc-700 transition-colors hover:bg-zinc-950/5 dark:text-zinc-200 dark:hover:bg-white/5 lg:hidden"
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
+      </header>
 
       {menuOpen && (
-        <div className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto border-t border-zinc-950/10 bg-paper dark:border-white/10 dark:bg-bg-dark lg:hidden">
-          <nav className="container mx-auto px-5 py-6 sm:px-6" aria-label="Mobil menü">
+        <div id="mobil-menu" className="fixed inset-x-0 bottom-0 top-16 z-[90] overflow-y-auto overscroll-contain border-t border-zinc-950/10 bg-paper dark:border-white/10 dark:bg-bg-dark lg:hidden">
+          <nav className="container mx-auto px-5 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:px-6" aria-label="Mobil menü">
             <div className="space-y-1">
               {MAIN_LINKS.map((link) => (
                 <Link
@@ -107,6 +122,6 @@ export default function Header() {
           </nav>
         </div>
       )}
-    </header>
+    </>
   );
 }
