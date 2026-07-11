@@ -47,11 +47,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Admin panelinden Supabase'e eklenen içerik (statik kataloğa ek olarak).
   // RLS herkese açık SELECT'e izin verdiği için anon client burada güvenle kullanılır.
-  const [dbPrograms, dbExercises, dbBlogs] = await Promise.all([
-    supabase.from("programs").select("id, created_at"),
-    supabase.from("exercises").select("id, created_at"),
-    supabase.from("blog_posts").select("id, created_at"),
-  ]);
+  let dbPrograms = { data: [] as any[] };
+  let dbExercises = { data: [] as any[] };
+  let dbBlogs = { data: [] as any[] };
+
+  try {
+    const [p, e, b] = await Promise.all([
+      supabase.from("programs").select("id, created_at"),
+      supabase.from("exercises").select("id, created_at"),
+      supabase.from("blog_posts").select("id, created_at"),
+    ]);
+    dbPrograms = p;
+    dbExercises = e;
+    dbBlogs = b;
+  } catch (err) {
+    console.warn("Sitemap: Supabase connection failed. Falling back to static routes.");
+  }
 
   const staticProgramIds = new Set(PROGRAMS_DATA.map((p) => p.id));
   const staticExerciseIds = new Set(EXERCISES_DATA.map((e) => e.id));

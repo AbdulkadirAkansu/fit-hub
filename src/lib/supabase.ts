@@ -13,6 +13,10 @@ if (!supabaseUrl || !supabasePublicKey) {
   );
 }
 
+// Vercel build aşamasında değişkenler yoksa uygulamanın çökmemesi için geçici değerler.
+const safeUrl = supabaseUrl || 'https://placeholder.supabase.co';
+const safeKey = supabasePublicKey || 'placeholder-key';
+
 /**
  * Global Supabase client with built-in network error resilience.
  * The `Failed to fetch` errors are suppressed at the client level
@@ -44,7 +48,7 @@ const resilientFetch: typeof fetch = async (input, init) => {
   }
 };
 
-export const supabase = createClient(supabaseUrl, supabasePublicKey, {
+export const supabase = createClient(safeUrl, safeKey, {
   auth: {
     persistSession: true,
     debug: false,
